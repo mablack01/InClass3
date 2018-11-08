@@ -1,0 +1,12 @@
+#!/bin/sh
+# Clean, compile, and run the test suite
+# Save the test suite output to file.txt
+# Return 1, if test failed (found keyword "FAILED" in the output)
+# Return 0, if test passed (did not find keyword "FAILED" in the output)
+FILE=$(ant clean && ant compile && ant -lib lib/ test > file.txt)
+if grep -Fq "FAILED" file.txt; then
+  rm file.txt  # clean-up created file
+  exit 1;      # this revision failed
+fi
+rm file.txt    # clean-up created file
+exit 0;        # this revision passed

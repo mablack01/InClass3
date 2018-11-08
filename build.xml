@@ -14,7 +14,7 @@
 
 <!-- Compile the project -->
     <target name="compile" depends="init" description="Compile all sources">
-        <javac includeantruntime="true" 
+        <javac includeantruntime="true"
                srcdir="src"
               destdir="bin"
                 debug="yes">
@@ -23,7 +23,7 @@
 
 <!-- Compile the test suite -->
     <target name="compile.tests" depends="compile" description="Compile all tests">
-        <javac includeantruntime="true" 
+        <javac includeantruntime="true"
                srcdir="test"
               destdir="bin"
                 debug="yes">
@@ -34,13 +34,13 @@
 <!-- Execute the test suite -->
     <target name="test" depends="compile.tests" description="Run all unit tests">
         <echo message="Running unit tests ..."/>
-        <junit  printsummary="true" 
-        		showoutput="true" 
+        <junit  printsummary="true"
+        		showoutput="true"
                 haltonfailure="false">
             <formatter type="plain" usefile="false"/>
             <classpath path="bin"/>
             <classpath location="${junit.jar}"/>
-			
+
 			<batchtest fork="no">
                 <fileset dir="test">
                     <include name="**/*Test.java"/>
